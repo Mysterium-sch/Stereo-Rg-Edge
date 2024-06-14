@@ -1,0 +1,14 @@
+[Unit]
+Description=Start Docker container on boot
+After=network.target
+
+[Service]
+Environment="DISPLAY=:0.0"
+Environment="XAUTHORITY=/home/afrl/.Xauthority"
+ExecStartPre=/usr/bin/xhost +local:
+ExecStart=/usr/bin/docker run --net=host -e DISPLAY -e "QT_X11_NO_MITSHM=1" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v "/home/afrl/Desktop/data:/ws/data" -v /dev:/dev --privileged abe
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=graphical.target
