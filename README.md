@@ -1,5 +1,13 @@
 # Stereo Rig Edge
 
+## Settng up system
+Several steps are required for the system to run correctly.
+
+1. `docker-container.service` allows for the system to launch the dockerfile on boot
+2. `udev` allows for the system to connect to the imu
+3. `Dockerfile` and `launch.sh` must exist in the same directory and `Dockerfile` must be built with the abe tag
+
+
 ## Launch.sh
 
 The Launch.sh file needs to be modified depending on the host device. The following changes need to be made.
@@ -29,3 +37,8 @@ Due to the sonar, the jetsons have a pre-set ip address of 192.168.0.100 (jetson
 3. ping orin to confirm connection
 4. scp -P 22 afrl@_ip adress of orin_:_path to bag file on orin_ _path to desired directory for bag_
 5. input password for afrl user
+
+## Additional Resources
+* The `Bag_File_instructions.txt` document includes instructions on how to decompress the images recorded by the program, how to merge the two bag files, and how to convert the ros2 bag file type to the ros bag file type.
+* The `jetson_scripts` includes two scripts to copy/remove all of the bag files off of the two jetsons
+
