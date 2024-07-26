@@ -4,7 +4,7 @@
 Several steps are required for the system to run correctly.
 
 1. `docker-container.service` allows for the system to launch the dockerfile on boot
-2. `udev` allows for the system to connect to the imu
+2. `udev` is a rule needed to be added to the udev rules and allows for the system to connect to the imu
 3. `Dockerfile` and `launch.sh` must exist in the same directory and `Dockerfile` must be built with the abe tag
 
 
