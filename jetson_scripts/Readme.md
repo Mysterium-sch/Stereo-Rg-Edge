@@ -1,9 +1,18 @@
-To be able to run either script two requirments must be met
+# Jetson Data Management Scripts
 
-1. have sshpass installed
-2. IP of adress has 192.168.0 as subnet
+## Overview
+This repository contains scripts for managing data on Jetson devices. The scripts allow you to retrieve the entire data folder or remove all `.bag` files from the Jetson devices on the same network subnet.
 
-Then just run scripts as such: ./remove.sh or ./retrieve.sh
+## Requirements
+Before running the scripts, ensure the following requirements are met:
 
-Retrieve will take then entire data folder from both jetsons
-Remove will remove all the bag files
+1. `sshpass` is installed on your system.
+2. The IP addresses of the Jetson devices are on the `192.168.0.x` subnet.
+
+## Usage
+To run the scripts, use the following commands:
+
+- To retrieve the entire data folder from both Jetsons:
+  ```sh
+  ./retrieve.sh
+
