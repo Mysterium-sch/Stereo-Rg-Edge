@@ -15,4 +15,8 @@ To run the scripts, use the following commands:
 - To retrieve the entire data folder from both Jetsons:
   ```sh
   ./retrieve.sh
+  
+ - To remove the bag files from both Jetsons:
+  ```sh
+  ./remove.sh
 
