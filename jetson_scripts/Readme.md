@@ -8,6 +8,7 @@ Before running the scripts, ensure the following requirements are met:
 
 1. `sshpass` is installed on your system.
 2. The IP addresses of the Jetson devices are on the `192.168.0.x` subnet.
+3. For the verification of the bag files at the end of the retrieve script, `source /opt/ros/humble/setup.bash` must source ros-humble
 
 ## Usage
 To run the scripts, use the following commands:
