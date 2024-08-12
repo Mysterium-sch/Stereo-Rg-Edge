@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 ubuntu:22.04
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
@@ -62,35 +62,28 @@ RUN mkdir -p /opt/ros2_ws/src && \
     vcs import src --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos && \
     /bin/bash -c '. /opt/ros/humble/setup.bash && rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"'
 
-RUN apt-get install -y python3-opencv
-
-RUN apt-get update && apt-get install -y ros-humble-ament-cmake ros-humble-control-msgs
-
-RUN mkdir -p /ws/src
-
-WORKDIR /ws
-
-RUN apt-get update && apt-get install -y ros-${ROS_DISTRO}-spinnaker-camera-driver iputils-ping
-
-WORKDIR /ws
-
-RUN mkdir -p /ws/src
-
-RUN cd /ws/src && \
-    git clone --branch humble-devel https://github.com/ros-drivers/flir_camera_driver &&\
-    git clone --recursive --branch ros2 https://github.com/18r441m/microstrain_inertial.git &&\
+RUN mkdir -p /ws/src && \
+    cd /ws/src && \
+    git clone --recursive --branch ros2 https://github.com/Mysterium-sch/microstrain_inertial.git &&\
+    git clone -b humble-devel https://github.com/18r441m/flir_camera_driver.git &&\
     git clone -b master --recursive https://github.com/tasada038/ms5837_bar_ros.git &&\
     cd ./ms5837_bar_ros/ms5837_bar_ros/ &&\
     mv ms5837-python/ms5837 ./ &&\
     sudo rm -r ms5837-python/*.py
 
+RUN apt-get install -y python3-opencv
+
+WORKDIR /ws
+
+RUN apt-get update && apt-get install -y ros-humble-ament-cmake ros-humble-control-msgs iputils-ping
+
 RUN rosdep install --from-paths src --ignore-src -y
 
-RUN echo 28
+RUN echo 29
 
 RUN cd src/ &&\
-	git clone https://github.com/Mysterium-sch/imagenex831l_ROS2.git &&\
     git clone https://github.com/Mysterium-sch/ros2_bringup.git &&\
+    git clone https://github.com/Mysterium-sch/imagenex831l_ROS2.git &&\
     git clone https://github.com/Mysterium-sch/stereo_screen.git
 
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
