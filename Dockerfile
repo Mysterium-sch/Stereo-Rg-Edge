@@ -75,13 +75,14 @@ RUN apt-get install -y python3-opencv
 
 WORKDIR /ws
 
-RUN apt-get update && apt-get install -y ros-humble-ament-cmake ros-humble-control-msgs iputils-ping
+RUN apt-get update && apt-get install -y ros-humble-ament-cmake ros-humble-control-msgs iputils-ping ros-humble-apriltag* ros-humble-rclcpp*
 
 RUN rosdep install --from-paths src --ignore-src -y
 
 RUN echo 29
 
 RUN cd src/ &&\
+    git clone https://github.com/christianrauch/apriltag_ros.git,
     git clone https://github.com/Mysterium-sch/ros2_bringup.git &&\
     git clone https://github.com/Mysterium-sch/imagenex831l_ROS2.git &&\
     git clone https://github.com/Mysterium-sch/stereo_screen.git
