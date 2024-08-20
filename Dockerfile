@@ -82,7 +82,7 @@ RUN rosdep install --from-paths src --ignore-src -y
 RUN echo 29
 
 RUN cd src/ &&\
-    git clone https://github.com/christianrauch/apriltag_ros.git,
+    git clone https://github.com/christianrauch/apriltag_ros.git &&\
     git clone https://github.com/Mysterium-sch/ros2_bringup.git &&\
     git clone https://github.com/Mysterium-sch/imagenex831l_ROS2.git &&\
     git clone https://github.com/Mysterium-sch/stereo_screen.git
