@@ -9,6 +9,7 @@ from std_msgs.msg import Float32
 from microstrain_inertial_msgs.msg import HumanReadableStatus
 import datetime
 import rosbag2_py
+from rclpy.serialization import serialize_message
 
 class Rosbag(Node):
 
@@ -30,7 +31,7 @@ class Rosbag(Node):
 
         self.set_topics()
 
-        self.april_tag_sub = self.create_subscription(AprilTagDetectionArray, f'{self.namespace}/detections', self.april_tag_callback, 10)
+        #self.april_tag_sub = self.create_subscription(AprilTagDetectionArray, f'{self.namespace}/detections', self.april_tag_callback, 10)
 
         self.image_sub = self.create_subscription(CompressedImage, f'{self.namespace}/flir_camera/image_raw/compressed', self.image_callback, 10)
 
